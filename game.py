@@ -77,7 +77,7 @@ class Game:
                 if hand.is_bust():
                     results.append((-1, bet))
                     break
-
+            self.player_hands[i] = (hand, bet)
             i += 1
 
         # Dealer's turn given the player hasn't busted. If the player has busted the dealer doesn't play.
