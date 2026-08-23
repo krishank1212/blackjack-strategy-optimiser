@@ -1,6 +1,6 @@
 import pickle
 import math
-from play_strategy import generate_initial_strategy
+from play_strategy import always_hit_strategy
 from simulation import evaluate_ev
 from strategy_optimiser import mutate_strategy
 
@@ -8,9 +8,9 @@ from strategy_optimiser import mutate_strategy
 # Hill-climbing optimisation
 # -----------------------------
 
-def optimise_strategy(iterations=100, num_games=200_000, no_of_decks=6):
+def optimise_strategy(iterations=1000, num_games=200_000, no_of_decks=6):
     """
-    Optimises blackjack strategy using hill-climbing.
+    Optimises blackjack strategy using hill-climbing, starting from always-hit strategy.
     Returns the best strategy and a history of EVs.
     """
     try:
@@ -19,7 +19,7 @@ def optimise_strategy(iterations=100, num_games=200_000, no_of_decks=6):
             current_strategy = strats
 
     except:
-        current_strategy = generate_initial_strategy()
+        current_strategy = always_hit_strategy()
     current_ev = evaluate_ev(current_strategy, num_games=num_games, no_of_decks=no_of_decks)
     history = [(0, current_ev)]
 
