@@ -74,7 +74,12 @@ def legal_actions(player_hand):
     Enforces blackjack rules independently of strategy.
     """
 
-    actions = ['hit']
+    actions = []
+    if player_hand.is_split_ace:
+        actions.append('stand')
+        return actions
+    
+    actions.append('hit')
     
     if player_hand.value >= 12:
         actions.append('stand')

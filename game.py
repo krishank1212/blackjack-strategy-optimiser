@@ -49,7 +49,7 @@ class Game:
                 # enforce legal actions
                 legal = legal_actions(hand)
                 if action not in legal:
-                    action = 'hit'
+                    action = legal[0]
 
                 if action == 'stand':
                     break
@@ -59,6 +59,9 @@ class Game:
                     new_hand.add_card(hand.cards.pop())
                     hand.add_card(self.deck.draw_card())
                     new_hand.add_card(self.deck.draw_card())
+                    if hand.cards[0].rank == 'A':
+                        hand.is_split_ace = True
+                        new_hand.is_split_ace = True
                     self.player_hands[i] = (hand, bet)
                     self.player_hands.append((new_hand, bet))
                     # do not increment i yet; will process current hand again if needed

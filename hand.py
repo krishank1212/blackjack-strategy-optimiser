@@ -2,6 +2,7 @@ class Hand:
     def __init__(self):
         self.cards = []
         self.aces = 0
+        self.is_split_ace = False
     def add_card(self, card):
         self.cards.append(card)
         
