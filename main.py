@@ -10,7 +10,7 @@ def main():
         decks = 6
         
     try:
-        games = int(input("Enter the number of games to simulate (default is 1000000): "))
+        games = int(input("Enter the number of games to simulate (default is 100000): "))
     except ValueError:
         print("Invalid input. Using default of 100,000 games.")
         games = 100000
