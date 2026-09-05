@@ -34,14 +34,16 @@ def optimise_strategy(iterations=1000, num_games=200_000, no_of_decks=6):
                 history.append((i, current_ev))
                 print(f"Iteration {i}: EV improved to {current_ev:.6f}")
 
-    # Save the best strategy
-    with open("best_strategy.pkl", "wb") as f:
-        pickle.dump(current_strategy, f)
+
 
     print(f"Optimisation complete. Best EV = {current_ev:.6f}")
     return current_strategy, history
 
 
-optimise_strategy()
+optimal_strat, history = optimise_strategy()
+
+# Save the best strategy
+with open("best_strategy.pkl", "wb") as f:
+    pickle.dump(optimal_strat, f)
 
 
