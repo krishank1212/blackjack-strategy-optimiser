@@ -13,13 +13,8 @@ def optimise_strategy(iterations=1000, num_games=200_000, no_of_decks=6):
     Optimises blackjack strategy using hill-climbing, starting from always-hit strategy.
     Returns the best strategy and a history of EVs.
     """
-    try:
-        with open("best_strategy.pkl", "rb") as f:
-            strats = pickle.load(f)
-            current_strategy = strats
-
-    except:
-        current_strategy = always_hit_strategy()
+    
+    current_strategy = always_hit_strategy()
     current_ev = evaluate_ev(current_strategy, num_games=num_games, no_of_decks=no_of_decks)
     history = [(0, current_ev)]
 
