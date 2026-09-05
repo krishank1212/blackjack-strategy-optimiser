@@ -14,7 +14,7 @@ A hand is represented by `Hand`, which tracks cards and computes its value with 
 
 A game state for strategy purposes is encoded as:
 
-$$(\text{hand\_type}, \text{value}, \text{dealer\_upcard})$$
+$$(\text{hand type}, \text{value}, \text{dealer upcard})$$
 
 where `hand_type` is one of `hard`, `soft`, or `pair`. Pairs are encoded by rank rather than total value, since the optimal action for a pair depends on the rank, not the numeric total (a pair of 8s and a hard 16 share a total but call for very different decisions). There are 390 such states in total.
 
@@ -81,7 +81,8 @@ To understand *why* the gap to baseline remains large, the final optimised strat
 
 Combining the first two rows: **328 of 390 states (84.1%) were never successfully mutated away from the seed action at all.** Of the remaining 62 states that were changed, 43 landed on the correct action and 19 did not, roughly a 70/30 split. This is consistent with the 66 accepted mutations recorded across the full run (66 accepted mutations producing 62 states differing from the seed implies a small number of states, likely one or two, were mutated more than once, with a later mutation landing back on the original seed action; the exact path can't be recovered from the final strategy alone, only from a per-state log recorded during the run itself).
 
-<img width="1256" height="500" alt="EV vs iteration during hill-climbing" src="ev_convergence.png" />
+<img width="1250" height="952" alt="image" src="https://github.com/user-attachments/assets/f6ff6df6-b005-4f97-a3a6-8fe4a48e5730" />
+
 
 *EV per £ wagered against iteration number, plotted from the `history` list returned by `optimise_strategy` (66 points, one per accepted mutation). Notably, the curve is still stepping upward at iteration ~970 with no visible plateau, indicating the search had not stalled at a local optimum by the end of the run.*
 
