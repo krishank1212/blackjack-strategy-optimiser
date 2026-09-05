@@ -22,6 +22,7 @@ class Card:
         
 class Deck:
     def __init__(self, no_of_decks=1):
+        self.no_of_decks = no_of_decks
         self.cards = [Card(suit, rank) for suit in Card.SUITS for rank in Card.RANKS] * no_of_decks
         self.shuffle() # Shuffle the deck upon initialisation
         
@@ -30,12 +31,11 @@ class Deck:
         
     def draw_card(self):
         if not self.cards:
-            self.__init__()  
+            self.__init__(self.no_of_decks)  # Reinitialise the deck if empty
         return self.cards.pop()
     
     def __len__(self):
         return len(self.cards)
 
 
-    
 
